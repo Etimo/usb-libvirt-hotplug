@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 #
 # usb-libvirt-hotplug.sh
@@ -28,7 +28,6 @@ if [ -z "${DOMAIN}" ]; then
   echo "Missing libvirt domain parameter for ${PROG}." >&2
   exit 1
 fi
-
 
 #
 # Do some sanity checking of the udev environment variables.
@@ -62,7 +61,7 @@ if [ -z "${ACTION}" ]; then
   echo "Missing udev ACTION environment variable." >&2
   exit 1
 fi
-if [ "${ACTION}" == 'add' ]; then
+if [ "${ACTION}" == 'bind' ]; then
   COMMAND='attach-device'
 elif [ "${ACTION}" == 'remove' ]; then
   COMMAND='detach-device'
